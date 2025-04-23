@@ -1,0 +1,21 @@
+#docker-compose up --build
+
+
+
+# Para parar todos os containers
+docker stop $(docker ps -aq)
+
+# Remover todos os containers
+docker rm $(docker ps -aq)
+
+# Remover todas as imagens
+docker rmi -f $(docker images -aq)
+
+# Remover todos os volumes
+docker volume rm $(docker volume ls -q)
+
+# Remover todas as redes (exceto as padrão)
+docker network rm $(docker network ls | grep -v "bridge\|host\|none" | awk '{ print $1 }')
+
+# Limpar o cache de build
+docker builder prune -a --force
