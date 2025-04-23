@@ -14,15 +14,6 @@ import {
     } from 'firebase/auth'
 
 
-
-
-
-
-
-
-
-
-
 function Home() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
