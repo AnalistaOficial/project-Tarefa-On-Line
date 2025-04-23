@@ -69,6 +69,18 @@ Para usar o Firebase no projeto, você precisa configurar seu próprio ambiente 
 4. Copie o bloco de configuração do Firebase, semelhante ao código abaixo:
 
 ```javascript
+
+Dentro do diretório 'tarefas/'
+Criar o diretóriio 'connection/'
+Dentro deste diretório, criar o arquivo 'index.jsx', após, colar o codigo abaixo.
+
+// Import the functions you need from the SDKs you need
+import {initializeApp} from 'firebase/app'
+import {getFirestore} from 'firebase/firestore'
+import {getAuth} from 'firebase/auth'
+
+
+//Adicionar as info de sua conexão com o Firebase.
 const firebaseConfig = {
     apiKey: "SUA_API_KEY_AQUI",
     authDomain: "SEU_AUTH_DOMAIN_AQUI",
@@ -78,3 +90,22 @@ const firebaseConfig = {
     appId: "SEU_APP_ID_AQUI",
     measurementId: "SEU_MEASUREMENT_ID_AQUI"
 };
+  
+  // Initialize Firebase
+
+  const dbConfig = initializeApp(firebaseConfig);
+  
+  const db = getFirestore(dbConfig);
+
+  const auth = getAuth(dbConfig);
+
+  export { db, auth };
+
+
+Atenção:
+
+No ambiente do Firebase criar uma coleção por nome 'tarefas'.
+
+Em Index você deve criar esses index da sua coleção.
+
+'tarefas' ==>	{uid Crescente} {criadoEm Decrescente}. Estes são os campos do seu documento que precisam ser indexados.
